@@ -1,0 +1,40 @@
+body{
+    background-color: #eaeaea;
+    transition: background-color 1s;
+}
+/* the initial background of body can be set either from here or from the app.js itself */
+.utilities-inner{
+    position: relative;
+    padding: 10px;
+}
+#dark-mode-switch{
+    position: absolute;
+    right: 10px;
+}
+
+.text-form-container{
+    padding: 70px;
+}
+
+.alert{
+    position: absolute;
+    top: 60px;
+    width: 100%;
+}
+
+.btn{
+    background-color: blue;
+    color: white;
+    transition: background-color 1s ease-in-out;
+    border: 2px solid transparent;
+}
+.btn:hover{
+    border: 2px solid gray;
+}
+.color-paletes .nav-link{
+    padding: 0;
+}
+.navbar-dark .color-paletes .nav-link{
+    color: rgb(255, 255, 255);
+
+}
