@@ -4,11 +4,11 @@ import Textform  from './components/Textform';
 import Alert from './components/Alert'
 import About from './components/About';
 import React,{useState} from 'react'
-import {
-  BrowserRouter as Router,
-  Routes ,
-  Route
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Routes ,
+//   Route
+// } from "react-router-dom";
 
 
 function App() {
@@ -56,7 +56,7 @@ function App() {
   }
   return (
     <>
-    <Router>
+    {/* <Router> */}
     <Navbar title="TextUtils" aboutTxt="about TextUtils" mode={myStyle.color==='black'?'light':'dark'} theme={themeSelector}/>
     <Alert alert={alert}/>
     <div className="container-fluid" style={myStyle} >
@@ -65,17 +65,17 @@ function App() {
             <input className="form-check-input" type="checkbox" role="switch" id="dark-mode-switcher" onClick={darkMode} aria-checked='false'/>
             <label className="form-check-label" htmlFor="dark-mode-switcher">Dark Mode</label>
           </div>
-          <Routes>
+          {/* <Routes>
           <Route exact path="/about" element={<About />}>
             
-          </Route>
-          <Route exact path="/" element={<Textform showAlert={showAlert} heading="Enter Your Text Below"  mode={myStyle.color} theme={theme}/>}>
-            
-          </Route>
-        </Routes>
+          </Route> */}
+          {/* <Route exact path="/" element={<Textform showAlert={showAlert} heading="Enter Your Text Below"  mode={myStyle.color} theme={theme}/>}> */}
+          <Textform showAlert={showAlert} heading="Enter Your Text Below"  mode={myStyle.color} theme={theme}/>
+          {/* </Route> */}
+        {/* </Routes> */}
       </div>
     </div>
-    </Router>
+    {/* </Router> */}
     </>
   );
 }

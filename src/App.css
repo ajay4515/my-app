@@ -36,5 +36,17 @@ body{
 }
 .navbar-dark .color-paletes .nav-link{
     color: rgb(255, 255, 255);
+}
 
+@media screen and (max-width:500px){
+    .btn{
+        width:100%;
+        margin:0 0 10px!important
+    }
+    textarea#txtarea{
+        margin-bottom:10px
+    }
+    .alert{
+        height:50px
+    }
 }
