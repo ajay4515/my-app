@@ -34,42 +34,38 @@ export default function Textform(props) {
       text.select();
       navigator.clipboard.writeText(text.value);
       props.showAlert("Text copied","success")
-
+    }
+    const handlePaste = () =>{
+      navigator.clipboard.readText().then(cliptext=>( setText(cliptext)));
+      props.showAlert("Text pasted","success")
     }
     const handleExtraSpaces = () =>{
       let newText = Text.split(/[ ]+/)
       setText(newText.join(' '))
       props.showAlert("Removed Extra Spaces","success")
-
     }
 
-    let word;
-    // let wordTwo = [];
-    if (Text.length < 1) {
-      word = Text.length
-    } else {
-      // Text.trim()
-      // wordTwo.join(Text.split(" "))
-      // console.log(wordTwo);
-      let newText = Text.split(/[ ]+/)
-      if (newText[newText.length - 1] === '' ) {
-        word = newText.length - 1
-        // console.log(`"${newText[newText.length - 1]}"`);
-      } else {
-        word = newText.length
-      }
-      // console.log(newText);
-      // console.log(Text.length)
-    }
-
+    // let word;
+    // if (Text.length < 1) {
+    //   word = Text.length
+    // } else {
+    //   // let newText = Text.split(/[ ]+/)
+    //   let newText = Text.split(" ")
+    //   newText.filter((element)=>{return element!==""});
+    //   if (newText[newText.length - 1] === '' ) {
+    //     word = newText.length - 1
+    //   } else {
+    //     word = newText.length
+    //   }
+    // }
+    let word = Text.split(" ").filter((element)=>{return element.length!==0}).length;
     let readingTime = 0.0133 * word
     let textPreview;
     if (Text.length <= 500) {
       textPreview = Text
     } else {
-      textPreview = Text.slice(0, 500) + '.....';
+      textPreview = Array(Text).slice(0, 500) + '.....';
     }
-
     const handleCapitalizeFirstLetter =() => {
       let upperText = Text.split(" ");
       for (let i = 0; i < upperText.length; i++) {
@@ -81,7 +77,6 @@ export default function Textform(props) {
       setText(upperStr)
     }
     const btn = document.querySelectorAll('.btn');
-    console.log(btn);
     // btn.style.backgroundColor = props.theme.backgroundColor;
     for (let i = 0; i < btn.length; i++) {
       const element = btn[i];
@@ -102,6 +97,7 @@ export default function Textform(props) {
             <button className="btn mt-3 mx-2" onClick={handleLoClick}>Convert Lower Case</button>
             <button className="btn mt-3 mx-2" onClick={clearText}>Clear Text</button>
             <button className="btn mt-3 mx-2" onClick={handleCopy}>Copy Text</button>
+            <button className="btn mt-3 mx-2" onClick={handlePaste}>Paste</button>
             <button className="btn mt-3 mx-2" onClick={handleExtraSpaces}>Clear Extra Spaces</button>
             <button className="btn mt-3 mx-2" onClick={handleCapitalizeFirstLetter}>Capitalize First Letter of Each Word</button>
             {/* <button className="btn mt-3 mx-2" onClick={handleCapitalizeFirstword}>Capitalize First Letter of Each Sentence</button> */}
@@ -111,12 +107,12 @@ export default function Textform(props) {
       </div>
       <div className="analysis">
         <h2>Your text analysis...</h2>
-        <p>{word} words and {Text.length} characters</p>
+        <p>{Text.split(" ").filter((element)=>{return element.length!==0}).length} words and {Text.length} characters</p>
         <p>{readingTime.toFixed(1)} Minutes read</p>
       </div>
       <div className="preview">
         <h2>Preview</h2>
-        <p>{textPreview.length>0?textPreview:'Enter Text In the box above to preview here'}</p>
+        <p>{Text.length>0?textPreview:'Enter Text In the box above to preview here'}</p>
       </div>
     </>
   )
