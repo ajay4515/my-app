@@ -49,4 +49,7 @@ body{
     .alert{
         height:50px
     }
+    .btn#pasteButton{
+        display: none;
+    }
 }

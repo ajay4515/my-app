@@ -93,13 +93,13 @@ export default function Textform(props) {
           <div className="text-box">
             <label htmlFor="txtarea" className="form-label"><h3>{props.heading}</h3></label>
             <textarea className="form-control" value={Text} onChange={onChangeHandler} id="txtarea" rows="8" style={{backgroundColor: props.mode==='black'?'white':'grey', color: props.mode==='black'?'black':'white'}}></textarea>
+            <button className="btn mt-3 mx-2" id='pasteButton' onClick={handlePaste}>Paste</button>
             <button className="btn mt-3 mr-2" onClick={handleUpClick}>Convert Upper Case</button>
             <button className="btn mt-3 mx-2" onClick={handleLoClick}>Convert Lower Case</button>
             <button className="btn mt-3 mx-2" onClick={clearText}>Clear Text</button>
-            <button className="btn mt-3 mx-2" onClick={handleCopy}>Copy Text</button>
-            <button className="btn mt-3 mx-2" onClick={handlePaste}>Paste</button>
             <button className="btn mt-3 mx-2" onClick={handleExtraSpaces}>Clear Extra Spaces</button>
             <button className="btn mt-3 mx-2" onClick={handleCapitalizeFirstLetter}>Capitalize First Letter of Each Word</button>
+            <button className="btn mt-3 mx-2" onClick={handleCopy}>Copy Text</button>
             {/* <button className="btn mt-3 mx-2" onClick={handleCapitalizeFirstword}>Capitalize First Letter of Each Sentence</button> */}
 
           </div>
